@@ -15,7 +15,7 @@ function Cart() {
   {
    cart.map(product =>(
      <div className="container detail cart" key={product._id} style={{padding: '0rem 11rem'}}>
-   <img src={product.images.url} alt="" srcset="" style={{width:'100%',marginLeft:'3%'}} className="img_container"/>
+   <img src={product.images.url} alt="" srcset="" style={{width:'100%',marginLeft:'3%'}} />
 
    <div className="box-detail" >
     {/* <div className="row"> */}
