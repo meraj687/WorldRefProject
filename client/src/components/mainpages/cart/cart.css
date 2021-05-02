@@ -2,7 +2,14 @@
   position: relative;
   border: 1px solid #ccc;
   transform: scale(0.98);
+
+  margin-left: '10%';
+  margin-right: '10%';
 }
+.cnt {
+  margin-left: '50%';
+}
+
 .amount span {
   color: crimson;
   padding: 0 20px;

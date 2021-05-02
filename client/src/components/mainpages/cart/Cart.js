@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
@@ -8,10 +8,53 @@ function Cart() {
  const [cart , setCart] = state.UserAPI.cart
  const [total , setTotal] = useState(0)
 
+
+ useEffect(()=>{
+    const getTotal=()=>{
+        const total = cart.reduce((prev,item)=>{
+            return prev + (item.price * item.quantity)
+        },0)
+        setTotal(total)
+    }
+    getTotal()
+ },[cart])
+
+ const increment = (id)=>{
+    cart.forEach(item=>{
+      if(item._id === id){
+        item.quantity += 1
+      }
+    })
+
+    setCart([...cart])
+ }
+
+  const decrement = (id)=>{
+    cart.forEach(item=>{
+      if(item._id === id){
+        item.quantity === 1 ? item.quantity =1 : item.quantity -= 1
+      }
+    })
+
+    setCart([...cart])
+ }
+
+ const removeProduct = (id)=>{
+   if(window.confirm("Do you want to delete this product?")){
+     cart.forEach((item , index)=>{
+       if(item._id === id){
+         cart.splice(index,1)
+       }
+     })
+     setCart([...cart])
+   }
+ }
+
+
  if(cart.length === 0) 
         return <h2 style={{textAlign: "center", fontSize: "5rem"}}>Cart Empty</h2> 
  return (
-  <div >
+  <div className="cnt" style={{marginLeft:'10%'}} >
   {
    cart.map(product =>(
      <div className="container detail cart" key={product._id} style={{padding: '0rem 11rem'}}>
@@ -26,18 +69,24 @@ function Cart() {
     <p>{product.content}</p>
 
     <div className="amount">
-     <button>-</button>
+     <button onClick={()=>{
+      decrement(product._id)
+    }}>-</button>
      <span>{product.quantity}</span>
-     <button>+</button>
+     <button onClick={()=>{
+      increment(product._id)
+    }}>+</button>
     </div>
     {/* <Link to="/cart" className="cart">Buy Now</Link> */}
-    <div className="delete">X</div>
+    <div className="delete" onClick={()=>{
+      removeProduct(product._id)
+    }} >X</div>
    </div>
   </div>
     ) )
   }
   <div className="total">
-   <h3 style={{    padding: '0rem 10rem'}}>Total : $ {total}</h3>
+   <h3 >Total : $ {total}</h3>
    <Link to="#!">Payment</Link>
   </div>
   </div>
