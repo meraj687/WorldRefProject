@@ -1,0 +1,78 @@
+header {
+  min-height: 70px;
+  width: 101%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0rem 0rem 2rem #ddd;
+}
+
+header .logo {
+  flex: 1;
+}
+header a {
+  text-transform: uppercase;
+  color: #555;
+}
+header ul li {
+  display: inline-block;
+  opacity: 0.7;
+  padding: 8.2px;
+}
+header ul li:hover {
+  opacity: 1;
+}
+.menu {
+  display: none;
+}
+.cart-icon {
+  position: relative;
+  margin-right: 20px;
+}
+.cart-icon span {
+  background: crimson;
+  border-radius: 20px;
+  color: white;
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  padding: 5px 7px;
+  font-size: 10px;
+}
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 20px;
+  opacity: 1;
+  border: 1px solid blanchedalmond;
+  box-shadow: 0rem 0rem 2rem #ddd;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}

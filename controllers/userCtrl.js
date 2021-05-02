@@ -14,7 +14,7 @@ const userCtrl = {
     if(password.length<6){
      return res.status(400).json({msg:"Password is at least 6 character"})
     }
-    if(organization_name == "xyz"){
+    if(organization_name == "organization_name"){
      return res.status(400).json({msg:"The member already exist. "})
     }
     if(phone_number.length < 10 || phone_number.length>10 ){
@@ -114,6 +114,20 @@ const userCtrl = {
     res.json(user)
    } catch (error) {
      return res.status(400).json({msg:err.message})
+   }
+ },
+ addCart : async(req,res)=>{
+   try {
+     const user = await Users.findById(req.user.id)
+     if(!user) return res.status(500).json({msg:"User does not exist."})
+
+     await Users.findByIdAndUpdate({_id:req.user.id},{
+       cart : req.body.cart
+     })
+
+     return res.json({msg:"Added to cart"})
+   } catch (error) {
+     return res.status(500).json({msg: error.message})
    }
  }
 }

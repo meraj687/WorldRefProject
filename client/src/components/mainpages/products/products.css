@@ -1,0 +1,14 @@
+.products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  justify-content: center;
+  margin: 20px 0;
+}
+@media screen and (min-width: 450px) {
+  .products {
+    padding: 0rem 27rem;
+  }
+}
+/*-----------------------------*/
+@import url(../utils//productItem//productitem.css);
