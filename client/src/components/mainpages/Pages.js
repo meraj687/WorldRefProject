@@ -14,19 +14,30 @@ import WorldRefServices from '../../screen/WorldRefServices';
 import Deals from '../../screen/Deals';
 
 import {GlobalState} from '../../GlobalState'
+import Categories from './categories/Categories';
+import CreateProduct from './createProduct/CreateProduct'
 
 export default function Pages() {
 
  const state = useContext(GlobalState)
  const [isLogged] = state.UserAPI.isLogged;
+ const [isAdmin] = state.UserAPI.isAdmin;
+
 
  return (
   <Switch>
   <Route path="/" exact component={Products}/>
   <Route path="/detail/:id" exact component={DetailProduct}/>
 
+  <Route path="/category" exact component={isAdmin ? Categories:NotFound}/>
+  <Route path="/category_product" exact component={isAdmin ? CreateProduct :NotFound} />
+
+
   <Route path="/login" exact component={isLogged? NotFound : Login}/>
   <Route path="/register" exact component={isLogged? NotFound : Register}/>
+
+
+
   <Route path="/imagevideo" exact component={ImagesVideo}/>
   <Route path="/tags" exact component={Tags}/>
   <Route path="/Mynetwork" exact component={MyNetwork}/>

@@ -16,7 +16,7 @@ const [cart] =state.UserAPI.cart
 
 const logoutUser=async()=>{
   await axios.get('/user/logout')
-  localStorage.clear()
+  // localStorage.clear()
   // setIsAdmin(false)
   // setIsLogged(false)
   window.location.href = "/"

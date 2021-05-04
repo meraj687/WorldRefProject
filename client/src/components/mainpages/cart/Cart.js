@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {GlobalState} from '../../../GlobalState'
-import axios from 'axios'
+import axios from 'axios';
 
 function Cart() {
  const state = useContext(GlobalState)
  const [cart , setCart] = state.UserAPI.cart
  const [total , setTotal] = useState(0)
-
+const [token] = state.token
 
  useEffect(()=>{
     const getTotal=()=>{
@@ -17,7 +17,15 @@ function Cart() {
         setTotal(total)
     }
     getTotal()
+
+    
  },[cart])
+
+ const addToCart = async(cart)=>{
+   await axios.patch('/user/addcart',{cart},{
+     headers : {Authorization:token}
+   })
+ }
 
  const increment = (id)=>{
     cart.forEach(item=>{
@@ -27,6 +35,7 @@ function Cart() {
     })
 
     setCart([...cart])
+    addToCart(cart)
  }
 
   const decrement = (id)=>{

@@ -50,3 +50,12 @@ button {
 /* ----------------------------------- */
 
 @import url('./components/mainpages/cart/cart.css');
+
+
+/* ----------------------------------- */
+
+@import url("./components/mainpages/categories/categories.css");
+
+/* ----------------------------------- */
+
+@import url(./components/mainpages/createProduct/createProduct.css);
