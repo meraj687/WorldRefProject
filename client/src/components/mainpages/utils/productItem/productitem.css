@@ -22,6 +22,9 @@
   cursor: pointer;
   color: #323232;
 }
+.product_box{
+  text-transform: uppercase;
+}
 .product_card span {
   color: crimson;
 }

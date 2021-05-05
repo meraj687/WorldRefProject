@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react'
 import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
+import { FaRemoveFormat, FaShopware, FaUserEdit } from 'react-icons/fa';
 function Categories() {
  const state = useContext(GlobalState)
  const [categories ] = state.categoriesAPI.categories;
@@ -55,7 +56,7 @@ function Categories() {
  return (
   <div className="categories" style={{textAlign:'center'}}>
    <form action="" onSubmit={createCategory}>
-    <label htmlFor="category">Category</label>
+    <label htmlFor="category"><FaShopware/>Category</label>
     <input type="text" name="category" value={category} onChange={e=>setCategory(e.target.value)} required/>
 
     <button type="submit">{onEdit ? "Update" : "Create"}</button>
@@ -69,8 +70,8 @@ function Categories() {
        <div>
         <button onClick={()=>{
          editCategory(category._id , category.name)
-        }}>Edit</button>
-        <button onClick={()=>deleteCategory(category._id)}>Delete</button>
+        }}><FaUserEdit/>Edit</button>
+        <button onClick={()=>deleteCategory(category._id)}><FaRemoveFormat/>Delete</button>
 
        </div>
 

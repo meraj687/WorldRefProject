@@ -5,6 +5,7 @@ import Close from './icon/close.svg';
 import Cart from './icon/cart.svg';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import { FaAddressBook, FaBeer, FaHistory, FaHome, FaImage, FaLock, FaNetworkWired, FaProductHunt, FaRegAngry, FaRegImages, FaServer, FaShopify, FaShoppingCart, FaShopware, FaSign, FaTags } from 'react-icons/fa';
 
 
 export default function Header() {
@@ -16,6 +17,9 @@ const [cart] =state.UserAPI.cart
 
 const logoutUser=async()=>{
   await axios.get('/user/logout')
+
+  localStorage.removeItem('firstLogin')
+  
   // localStorage.clear()
   // setIsAdmin(false)
   // setIsLogged(false)
@@ -25,8 +29,8 @@ const logoutUser=async()=>{
 const adminRouter = ()=>{
   return(
     <>
-    <li><Link to="/category_product">Create Product</Link></li>
-    <li><Link to="/category">Categories</Link></li>
+    <li><Link to="/category_product"><FaProductHunt/>Create Product</Link></li>
+    <li><Link to="/category"><FaShoppingCart/>Categories</Link></li>
 
     </>
   )
@@ -35,8 +39,8 @@ const adminRouter = ()=>{
 const loggedRouter = ()=>{
   return(
     <>
-    <li><Link to="/history">History</Link></li>
-    <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+    <li><Link to="/history"><FaHistory/>History</Link></li>
+    <li><Link to="/" onClick={logoutUser}><FaLock/>Logout</Link></li>
     </>
   )
 }
@@ -54,11 +58,13 @@ const loggedRouter = ()=>{
     </h1>
    </div>
    <ul>
-    <li><Link to="/">{isAdmin ? 'Products' : "Shop"}</Link></li>
+    <li><Link to="/">{isAdmin ? <p><FaShopware/>Products</p> : 
+    
+    <p><FaShopify/>Shop</p>}</Link></li>
 
     {isAdmin && adminRouter()}
     {
-      isLogged ? loggedRouter() :<li><Link to="/login">Login & Register</Link></li>
+      isLogged ? loggedRouter() :<li><Link to="/login"><FaSign/>Login & Register</Link></li>
     }
 
     <li>
@@ -76,15 +82,17 @@ const loggedRouter = ()=>{
    }
   </header>
   <div class="sidenav">
-   <a><Link to="/"><img src="https://worldref.co/wp-content/uploads/2021/01/Worldref-scaled.jpg" alt="" width="100%"/></Link></a>
+   <a><Link to="/"><img src="https://worldref.co/wp-content/uploads/2021/01/Worldref-scaled.jpg" alt="" width="100%" className="Imagecontrol"/></Link></a>
    <br/>
-  <a><Link to="/">Home</Link></a>
-  <a><Link to="/Transaction">Transaction</Link></a>
-  <a><label htmlFor="" style={{fontSize:'55%',color:'blue'}}>Product And Services</label></a>
-  <a><Link to="/worldrefservices">WorldRef Services</Link></a>
-  <a><Link to="Mynetwork">My Network</Link></a>
-  <a><Link to="tags">Tags</Link></a>
-  <a><Link to="imagevideo">Images And Videos</Link></a>
+  <a><Link to="/"><FaHome/>Home</Link></a>
+  <a><Link to="/Transaction"><FaAddressBook/>Transaction</Link></a>
+  <br/>
+  <label htmlFor="" style={{fontSize:'78%',color:'blue',textTransform:'uppercase'}}>Product And Services</label><br/>
+  <br/>
+  <a><Link to="/worldrefservices"><FaServer/>WorldRef Services</Link></a>
+  <a><Link to="Mynetwork"><FaNetworkWired/>My Network</Link></a>
+  <a><Link to="tags"><FaTags/>Tags</Link></a>
+  <a><Link to="imagevideo"><FaRegImages/>Images And Videos</Link></a>
 </div>
   </>
   

@@ -47,7 +47,7 @@ header ul li:hover {
   width: 160px;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 0px;
   left: 0;
   background-color: white;
   overflow-x: hidden;
@@ -60,7 +60,7 @@ header ul li:hover {
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 15px;
   color: #818181;
   display: block;
 }
@@ -76,3 +76,24 @@ header ul li:hover {
     font-size: 18px;
   }
 }
+.sidenav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidenav a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+.Imagecontrol{
+  background: none;
+}
+.Imagecontrol a.active{
+  background-color: none;
+}
+.Imagecontrol a:hover:not(.active)
+{
+  background-color: none;
+}
+
