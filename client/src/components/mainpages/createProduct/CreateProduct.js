@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import {GlobalState} from '../../../GlobalState'
 import Loading from '../utils/loading/Loading'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import { FaSave } from 'react-icons/fa'
 
 const initialState={
@@ -11,7 +11,8 @@ const initialState={
  price : 0,
  description : "WorldRef ecommer Web app",
  content : 'Reactjs Framescript',
- category: ''
+ category: '',
+ _id : ''
 }
 
 function CreateProduct() {
@@ -26,6 +27,29 @@ function CreateProduct() {
  const [token] = state.token
 
  const history = useHistory()
+ const param = useParams()
+
+ const [products] = state.productsAPI.products
+ const [onEdit , setOnEdit] = useState(false)
+
+ useEffect(()=>{
+  if(param.id){
+    products.forEach(product=>{
+      if(product._id === param.id) 
+      {
+        setOnEdit(true)
+        setProduct(product)
+        setImages(product.images)
+      }
+
+    })
+    
+  }else{
+    setOnEdit(false)
+    setProduct(initialState)
+    setImages(false)
+  }
+ },[param.id , products])
 
 
   const handleDestroy=async()=>{
@@ -92,6 +116,7 @@ const handleSubmit = async e=>{
 
       setImages(false)
       setProduct(initialState)
+      history.push('/')
   } catch (error) {
     alert(error.response.data.msg)
   }
@@ -116,7 +141,7 @@ const handleSubmit = async e=>{
    <form action="" onSubmit={handleSubmit}>
     <div className="row">
      <label htmlFor="product_id">Product ID</label>
-     <input type="text" name="product_id" id="product_id" required value={product.product_id} onChange={handleChangeInput}/>
+     <input type="text" name="product_id" id="product_id" required value={product.product_id} onChange={handleChangeInput} disabled = {onEdit}/>
     </div>
 
     <div className="row">
