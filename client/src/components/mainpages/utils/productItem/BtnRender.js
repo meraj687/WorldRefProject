@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import {Link} from 'react-router-dom';
 import {GlobalState} from '../../../../GlobalState'
 
-function BtnRender({product}) {
+function BtnRender({product , deleteProduct}) {
   const state = useContext(GlobalState)
  const [products] = state.productsAPI.products
  const [isAdmin] = state.UserAPI.isAdmin
@@ -12,7 +12,7 @@ function BtnRender({product}) {
      {
        isAdmin ? 
                 <>
-                    <Link id="btn_buy" to="#!" 
+                    <Link id="btn_buy" to="#!" onClick={() =>deleteProduct(product._id, product.images.public_id)}
                     >
                         Delete
                     </Link>

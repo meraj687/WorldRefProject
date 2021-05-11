@@ -3,14 +3,16 @@ import React, { useContext, useState } from 'react'
 import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
 import { FaRemoveFormat, FaShopware, FaUserEdit } from 'react-icons/fa';
+
+
 function Categories() {
  const state = useContext(GlobalState)
- const [categories ] = state.categoriesAPI.categories;
- const [category , setCategory] = useState('')
- const [token] = state.token
- const [callback , setCallback] = state.categoriesAPI.callback
- const [onEdit , setOnEdit] = useState(false)
- const [id , setID] = useState('')
+    const [categories] = state.categoriesAPI.categories
+    const [category, setCategory] = useState('')
+    const [token] = state.token
+    const [callback, setCallback] = state.categoriesAPI.callback
+    const [onEdit, setOnEdit] = useState(false)
+    const [id, setID] = useState('')
 
 
  const createCategory= async e =>{
@@ -55,7 +57,7 @@ function Categories() {
  }
  return (
   <div className="categories" style={{textAlign:'center'}}>
-   <form action="" onSubmit={createCategory}>
+   <form  onSubmit={createCategory}>
     <label htmlFor="category"><FaShopware/>Category</label>
     <input type="text" name="category" value={category} onChange={e=>setCategory(e.target.value)} required/>
 
@@ -68,9 +70,9 @@ function Categories() {
       <div className="row" key={category._id}>
        <p>{category.name}</p>
        <div>
-        <button onClick={()=>{
+        <button onClick={()=>
          editCategory(category._id , category.name)
-        }}><FaUserEdit/>Edit</button>
+        }><FaUserEdit/>Edit</button>
         <button onClick={()=>deleteCategory(category._id)}><FaRemoveFormat/>Delete</button>
 
        </div>

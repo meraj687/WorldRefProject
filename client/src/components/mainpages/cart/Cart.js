@@ -56,6 +56,7 @@ const [token] = state.token
        }
      })
      setCart([...cart])
+     addToCart(cart)
    }
  }
 

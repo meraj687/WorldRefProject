@@ -5,7 +5,8 @@ import Close from './icon/close.svg';
 import Cart from './icon/cart.svg';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
-import { FaAddressBook, FaBeer, FaHistory, FaHome, FaImage, FaLock, FaNetworkWired, FaProductHunt, FaRegAngry, FaRegImages, FaServer, FaShopify, FaShoppingCart, FaShopware, FaSign, FaTags } from 'react-icons/fa';
+import { FaAddressBook, FaHistory, FaHome, FaLock, FaNetworkWired, FaProductHunt,  FaRegImages, FaServer, FaShopify, FaShoppingCart, FaShopware, FaSign, FaTags } from 'react-icons/fa';
+import Login from '../mainpages/auth/Login'
 
 
 export default function Header() {
@@ -29,6 +30,7 @@ const logoutUser=async()=>{
 const adminRouter = ()=>{
   return(
     <>
+    
     <li><Link to="/category_product"><FaProductHunt/>Create Product</Link></li>
     <li><Link to="/category"><FaShoppingCart/>Categories</Link></li>
 
@@ -64,7 +66,7 @@ const loggedRouter = ()=>{
 
     {isAdmin && adminRouter()}
     {
-      isLogged ? loggedRouter() :<li><Link to="/login"><FaSign/>Login & Register</Link></li>
+      isLogged ? loggedRouter() :<li><Link to="/login"><FaSign/>Login & Register </Link></li>
     }
 
     <li>
@@ -85,6 +87,7 @@ const loggedRouter = ()=>{
    <a><Link to="/"><img src="https://worldref.co/wp-content/uploads/2021/01/Worldref-scaled.jpg" alt="" width="100%" className="Imagecontrol"/></Link></a>
    <br/>
   <a><Link to="/"><FaHome/>Home</Link></a>
+  <a><Link to="/deals"><FaHome/>Deals</Link></a>
   <a><Link to="/Transaction"><FaAddressBook/>Transaction</Link></a>
   <br/>
   <label htmlFor="" style={{fontSize:'78%',color:'blue',textTransform:'uppercase'}}>Product And Services</label><br/>

@@ -1,6 +1,7 @@
 const Users= require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+
 const userCtrl = {
  register:async(req,res)=>{
   try {
@@ -116,7 +117,7 @@ const userCtrl = {
 
     res.json(user)
    } catch (error) {
-     return res.status(400).json({msg:err.message})
+     return res.status(400).json({msg:error.message})
    }
  },
  addCart : async(req,res)=>{

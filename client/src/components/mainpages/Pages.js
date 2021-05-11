@@ -35,7 +35,7 @@ export default function Pages() {
 
 
 
-  <Route path="/login" exact component={isLogged? NotFound : Login}/>
+  <Route path="/login" exact component={isLogged? NotFound :  Login} />
   <Route path="/register" exact component={isLogged? NotFound : Register}/>
 
 

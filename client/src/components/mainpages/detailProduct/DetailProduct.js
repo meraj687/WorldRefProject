@@ -17,14 +17,14 @@ useEffect(()=>{
     if(product._id === params.id) setDetailProduct(product)
    })
   }
-},[params,products])
+},[params.id,products])
 
  // console.log(detailProduct)
  if(detailProduct.length === 0) return null;
  return (
   <>
   <div className="container detail" style={{padding: '0rem 11rem'}}>
-   <img src={detailProduct.images.url} alt="" srcset="" style={{width:'100%',marginLeft:'3%'}} />
+   <img src={detailProduct.images.url} alt="" style={{width:'100%',marginLeft:'3%'}} />
    <div className="box-detail" >
     <div className="row">
      <h2>{detailProduct.title}</h2>

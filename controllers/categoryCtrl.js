@@ -12,7 +12,6 @@ const categoryCtrl  = {
   },
   createCategory: async(req,res)=>{
     try {
-
       const {name} = req.body;
       const category = await Category.findOne({name})
       if(category) return res.status(400).json({msg:"This category already exist"})
