@@ -158,3 +158,28 @@ height: 34px;
 /* ----------------------------------- */
 
 @import url("./components/mainpages/createProduct/createProduct.css");
+
+/* ----------------------------------- */
+
+.delete-all{
+  text-align: right;
+  margin: 20px;
+}
+.delete-all input{
+  height: 25px;
+  width: 25px;
+  transform: translate(5px);
+  margin: 0 15px;
+}
+.delete-all span{
+  text-transform: uppercase;
+  color: rgba(3,385,206);
+  letter-spacing: 1.3px;
+}
+.delete-all button{
+  border: 1px solid crimson;
+  padding: 10px 20px;
+  color: crimson;
+  text-transform: uppercase;
+
+}
