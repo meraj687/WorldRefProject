@@ -4,6 +4,7 @@ import ProductItem from '../utils/productItem/ProductItem'
 // import loading from '../utils/loading/Loading'
 import Loading from '../utils/loading/Loading'
 import axios from 'axios';
+import Filters from './Filters';
 
 function Products() {
  const state = useContext(GlobalState)
@@ -82,6 +83,7 @@ function Products() {
 
  return (
    <>
+   <Filters/>
    {
      isAdmin && 
      <div className="delete-all">

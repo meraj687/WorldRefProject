@@ -1,13 +1,18 @@
 header {
   min-height: 70px;
   width: 101%;
-  overflow: hidden;
+  overflow:hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid #ddd;
   box-shadow: 0rem 0rem 2rem #ddd;
+  position: fixed;
+  background: white;
+  z-index: 999;
+  top: 0;
+  left: 0;
 }
 
 header .logo {
@@ -55,6 +60,7 @@ header ul li:hover {
   opacity: 1;
   border: 1px solid blanchedalmond;
   box-shadow: 0rem 0rem 2rem #ddd;
+  background: white;
 }
 
 .sidenav a {
@@ -67,6 +73,11 @@ header ul li:hover {
 
 .sidenav a:hover {
   color: black;
+}
+.txtCss{
+  width: 30%;
+  border: 1px solid gray;
+  border-radius: 2%;
 }
 @media screen and (max-height: 450px) {
   .sidenav {
